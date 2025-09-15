@@ -133,7 +133,6 @@
     <ClInclude Include="BitBlt.h" />
     <ClInclude Include="PutSprite.h" />
     <ClInclude Include="resource.h" />
-    <ClInclude Include="resource1.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Resource.rc" />

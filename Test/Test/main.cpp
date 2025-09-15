@@ -6,6 +6,8 @@
 #include "AlphaBlend.h"
 #include "PutSprite.h"
 
+void __Animate(HWND hWnd);
+
 LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
 HINSTANCE g_hInst;
 HWND hWndMain;
@@ -58,7 +60,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance
         //// 메시지가 없으면
         else
         {
-            WM_PAINT;
+            __Animate(hWnd);
         }
     }
 
@@ -70,6 +72,8 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance
 
 static HBITMAP OldBitmap = NULL;
 static HDC MemDC;
+static int x = 0;
+static int y = 300;
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
 {
@@ -86,12 +90,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
 
         MemDC = CreateCompatibleDC(hdc);
 
-
         Test_BitBlt(hdc, MemDC, g_hInst, IDB_BITMAP1, 500, 0);
 
         Test_AlphaBlend(hdc, MemDC,g_hInst, Alpha, IDB_BITMAP1, 0, 0);
-
-        PutSprite(hdc, 10, 20, MemDC, 0, g_hInst);
 
         DeleteDC(MemDC);
 
@@ -110,10 +111,40 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
         InvalidateRect(hWnd, NULL, TRUE);
         return TRUE;
 
+    case WM_KEYDOWN:
+        switch (wParam)
+        {
+        case VK_LEFT: x -= 10; break;
+        case  VK_RIGHT: x += 10; break;
+        case VK_UP: y -= 10; break;
+        case VK_DOWN: y += 10; break;
+        }
+
+        InvalidateRect(hWnd, NULL, TRUE);
+        return 0;
+
     case WM_DESTROY:
         PostQuitMessage(0);
         return 0;
     }
 
     return(DefWindowProc(hWnd, iMessage, wParam, lParam));
+}
+
+void __Animate(HWND hWnd)
+{
+    HDC hdc;
+    PAINTSTRUCT ps;
+    
+    hdc = GetDC(hWnd);
+
+    MemDC = CreateCompatibleDC(hdc);
+
+    PutSprite(hdc, x, y, MemDC, 0, g_hInst);
+
+    DeleteDC(MemDC);
+
+    ReleaseDC(hWnd,hdc);
+
+    return;
 }

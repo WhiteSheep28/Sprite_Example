@@ -1,6 +1,6 @@
 #include <Windows.h>
 
-#include "resource1.h"
+#include "resource.h"
 
 BOOL PutSprite(HDC hdc, int x, int y, HDC memDc, COLORREF colorkey, HINSTANCE g_hInst)
 {
@@ -21,6 +21,19 @@ BOOL PutSprite(HDC hdc, int x, int y, HDC memDc, COLORREF colorkey, HINSTANCE g_
 	
 	while (Frame < 5)
 	{
+		MyBitMap = LoadBitmap(g_hInst, MAKEINTRESOURCE(IDB_BITMAP1));
+		OldBitMap = (HBITMAP)SelectObject(memDc, MyBitMap);
+		GetObject(MyBitMap, sizeof(BITMAP), &bit);
+
+		bx = bit.bmWidth;
+		by = bit.bmHeight;
+
+		BitBlt(hdc, 0, 300, bx, by, memDc, 0, 0, SRCCOPY);
+
+		SelectObject(memDc, OldBitMap);
+
+		DeleteObject(MyBitMap);
+
 		OldBitMap = (HBITMAP)SelectObject(memDc, hBit[Frame]);
 		GetObject(hBit[Frame], sizeof(BITMAP), &bit);
 		
@@ -34,10 +47,10 @@ BOOL PutSprite(HDC hdc, int x, int y, HDC memDc, COLORREF colorkey, HINSTANCE g_
 		SelectObject(memDc, OldBitMap);
 
 		Frame++;
+	}
 
-		DeleteObject(hBit[Frame]);
-
-		Sleep(100);
+	for (int i = 0; i < 5; ++i) {
+		if (hBit[i]) DeleteObject(hBit[i]);
 	}
 
 	if (GetObject == 0) return FALSE;

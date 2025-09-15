@@ -1,3 +1,7 @@
-﻿  PutSprite.cpp
-C:\Users\admin\Downloads\Sprite_Example-main\Test\Test\PutSprite.cpp(7,10): warning C4101: 'MyBitMap' :참조되지 않은 지역 변수입니다.
-  Test.vcxproj -> C:\Users\admin\Downloads\Sprite_Example-main\Test\x64\Debug\Test.exe
+﻿  AlphaBlend.cpp
+  PutSprite.cpp
+  main.cpp
+  코드를 생성하고 있습니다...
+C:\Users\white\Downloads\Sprite_Example-main (1)\Sprite_Example-main\Test\Test\main.cpp(68,19): warning C4244: 'return': 'WPARAM'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\white\Downloads\Sprite_Example-main (1)\Sprite_Example-main\Test\Test\main.cpp(137,17): warning C4101: 'ps' :참조되지 않은 지역 변수입니다.
+  Test.vcxproj -> C:\Users\white\Downloads\Sprite_Example-main (1)\Sprite_Example-main\Test\x64\Debug\Test.exe
