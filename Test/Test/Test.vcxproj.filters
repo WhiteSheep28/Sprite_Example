@@ -24,6 +24,9 @@
     <ClCompile Include="AlphaBlend.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="PutSprite.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BitBlt.h">
@@ -35,6 +38,12 @@
     <ClInclude Include="AlphaBlend.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="PutSprite.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="resource1.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Resource.rc">
@@ -43,6 +52,21 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\opera.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="..\1.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="..\2.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="..\3.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="..\4.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="..\5.bmp">
       <Filter>리소스 파일</Filter>
     </Image>
   </ItemGroup>

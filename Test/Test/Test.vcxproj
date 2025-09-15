@@ -126,16 +126,24 @@
     <ClCompile Include="AlphaBlend.cpp" />
     <ClCompile Include="BitBlt.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="PutSprite.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AlphaBlend.h" />
     <ClInclude Include="BitBlt.h" />
+    <ClInclude Include="PutSprite.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="resource1.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Resource.rc" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="..\1.bmp" />
+    <Image Include="..\2.bmp" />
+    <Image Include="..\3.bmp" />
+    <Image Include="..\4.bmp" />
+    <Image Include="..\5.bmp" />
     <Image Include="..\opera.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

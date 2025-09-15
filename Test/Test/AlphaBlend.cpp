@@ -3,7 +3,7 @@
 #pragma comment(lib, "Msimg32.lib")
 
 
-void Test_AlphaBlend(HDC hdc, HDC MemDC, HINSTANCE g_hinst, int Alpha, int Image, int x, int y)
+bool Test_AlphaBlend(HDC hdc, HDC MemDC, HINSTANCE g_hinst, int Alpha, int Image, int x, int y)
 {
 	int cx;
 	int cy;
@@ -29,4 +29,7 @@ void Test_AlphaBlend(HDC hdc, HDC MemDC, HINSTANCE g_hinst, int Alpha, int Image
 	SelectObject(MemDC, OldBitMap);
 
 	DeleteObject(MyBitMap);
+
+	if (GetObject == 0) return FALSE;
+	else return TRUE;
 }

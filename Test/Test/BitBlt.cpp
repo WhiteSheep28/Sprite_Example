@@ -1,6 +1,6 @@
 #include "BitBlt.h"
 
-void Test_BitBlt(HDC hdc,HDC MemDC, HINSTANCE g_hinst ,int Image, int x, int y)
+bool Test_BitBlt(HDC hdc,HDC MemDC, HINSTANCE g_hinst ,int Image, int x, int y)
 {
 	int cx;
 	int cy;
@@ -22,4 +22,7 @@ void Test_BitBlt(HDC hdc,HDC MemDC, HINSTANCE g_hinst ,int Image, int x, int y)
 	SelectObject(MemDC, OldBitMap);
 	
 	DeleteObject(MyBitMap);
+
+	if (GetObject == 0) return FALSE;
+	else return TRUE;
 }

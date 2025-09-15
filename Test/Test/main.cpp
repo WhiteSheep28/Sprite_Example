@@ -4,6 +4,7 @@
 
 #include "BitBlt.h"
 #include "AlphaBlend.h"
+#include "PutSprite.h"
 
 LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
 HINSTANCE g_hInst;
@@ -36,10 +37,32 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance
     ShowWindow(hWnd, nCmdShow);
     hWndMain = hWnd;
 
+    /*
     while (GetMessage(&Message, 0, 0, 0)) {
         TranslateMessage(&Message);
         DispatchMessage(&Message);
     }
+    */
+
+    while (TRUE)
+    {
+        if (PeekMessage(&Message, NULL, 0, 0,
+            PM_REMOVE)) // 메시지 큐에서 메시지 제거
+        {
+            if (Message.message == WM_QUIT)
+                break;
+
+            TranslateMessage(&Message);
+            DispatchMessage(&Message);
+        }
+        //// 메시지가 없으면
+        else
+        {
+            WM_PAINT;
+        }
+    }
+
+
     return Message.wParam;
 }
 
@@ -67,6 +90,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
         Test_BitBlt(hdc, MemDC, g_hInst, IDB_BITMAP1, 500, 0);
 
         Test_AlphaBlend(hdc, MemDC,g_hInst, Alpha, IDB_BITMAP1, 0, 0);
+
+        PutSprite(hdc, 10, 20, MemDC, 0, g_hInst);
 
         DeleteDC(MemDC);
 
